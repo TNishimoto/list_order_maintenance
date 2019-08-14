@@ -109,13 +109,15 @@ namespace my {
 	}
 	void ListOrderMaintenance::print(const std::list<LOInt>::iterator& x) {
 		for (auto &v : this->_list) {
-			std::cout << setw(19) << v << " " << std::flush;
+			//std::cout << setw(19) << v << " " << std::flush;
 			//if (v == *x) { std::cout << "!" << k << std::endl; }
 			
 		}
+		/*
 		std::cout << std::endl;
 		std::cout << this->getBasicLabel(x) << "/" << this->getStarLabel(x) << "/" << *x << std::endl;
 		std::cout << "max = " << this->labelMaxValue << std::endl;
+		*/
 	}
 
 	const std::list<LOInt>::iterator ListOrderMaintenance::insertAfter() {

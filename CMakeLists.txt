@@ -11,9 +11,11 @@ set(CMAKE_CXX_FLAGS_DEBUG  "-g -O0 -DDEBUG")
 set(CMAKE_CXX_FLAGS_RELEASE  "-O3 -DNDEBUG")
 
 
-INCLUDE_DIRECTORIES(module)
 
-add_executable(a.out ./main/list_order_test.cpp)
+FILE(GLOB SOURCES src/*.cpp)
+
+
+add_executable(a.out ${SOURCES} ./main/list_order_test.cpp)
 
 
 #target_link_libraries(a.out fn)

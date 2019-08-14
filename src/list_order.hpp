@@ -12,8 +12,8 @@ using namespace std;
 
 namespace my
 {
+using LOInt = __int128_t;
 //using LOInt = uint64_t;
-using LOInt = uint64_t;
 
 class ListOrderLessComparer
 {

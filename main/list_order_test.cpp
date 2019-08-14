@@ -142,8 +142,8 @@ int main() {
 	//const __int128 m = 3329589384618324948;
     //__int128 n = m * m;
 	//std::cout << my::to_string(n) << std::endl;
-	my::ListOrderMaintenanceTest::Test3(10000);
-	//my::ListOrderMaintenanceTest::Test2(10000000);
+	//my::ListOrderMaintenanceTest::Test3(10000);
+	my::ListOrderMaintenanceTest::Test2(10000);
 	//my::ListOrderMaintenanceTest::Debug(10000000);
 	//std::cout << "finish" << std::endl;
 	
