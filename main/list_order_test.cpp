@@ -1,4 +1,3 @@
-#pragma once
 #include <vector>
 #include <iostream>
 #include <list>
@@ -8,8 +7,8 @@
 #include <map>
 #include <set>
 #include <forward_list> 
-#include "MyFunction.cpp"
-#include "list_order_map.hpp"
+#include "../src/MyFunction.cpp"
+#include "../src/list_order_map.hpp"
 
 using namespace std;
 
