@@ -1,0 +1,3 @@
+[submodule "module/stool"]
+	path = module/stool
+	url = https://github.com/TNishimoto/stool

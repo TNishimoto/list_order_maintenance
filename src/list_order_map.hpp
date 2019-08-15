@@ -11,8 +11,6 @@ namespace my {
 			auto ptr = map.upper_bound(item);
 			if (map.size() == 0 || ptr == map.begin()) {
 				auto ptr2 = list.insertAfter();
-				std::cout << sizeof(ptr2) << std::endl;
-				throw -1;
 				map.insert(std::pair<int, std::list<LOInt>::iterator>(item, ptr2));
 			}
 			else {

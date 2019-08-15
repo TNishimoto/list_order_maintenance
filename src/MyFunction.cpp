@@ -162,6 +162,7 @@ public:
 		text[n] = 0;
 		return text;
 	}
+	/*
 	static bool CreateSampleFiles() {
 		char* file1 = "../../data/dna.50MB";
 		auto str = ReadFile(file1);
@@ -172,11 +173,14 @@ public:
 		Save("../../data/dna.0005MB", *str, len / 10000);
 		return true;
 	}
-	static bool ReadAndSave(char* filename, int length, char* outputName) {
+	*/
+/*
+	static bool ReadAndSave(std::string filename, int length, char* outputName) {
 		auto str = ReadFile(filename);
 		return Save(filename, *str, length);
 
 	}
+	*/
 	static bool Save(char* filename, std::string& text) {
 		return Save(filename, text, text.size());
 	}
@@ -263,7 +267,7 @@ public:
 		}
 		return k;
 	}
-	
+	/*
 	template <class X>
 	static void Print(vector<X>& items) {
 		std::cout << "[";
@@ -273,8 +277,8 @@ public:
 			if (i != items.size() - 1) std::cout << ", ";
 		}
 		std::cout << "]" << std::endl;
-
 	}
+	*/
 	static int Max(vector<int>& items) {
 		int k = 0;
 		for (auto it : items) {
