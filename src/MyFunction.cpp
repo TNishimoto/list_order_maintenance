@@ -23,9 +23,9 @@ public:
 		alphabets.push_back('e');
 
 
-		std::random_device rnd;     // 非決定的な乱数生成器を生成
-		std::mt19937 mt(rnd());     //  メルセンヌ・ツイスタの32ビット版、引数は初期シード値
-		std::uniform_int_distribution<> rand100(0, alphabetSize-1);        // [0, 99] 範囲の一様乱数
+		std::random_device rnd; 
+		std::mt19937 mt(rnd()); 
+		std::uniform_int_distribution<> rand100(0, alphabetSize-1); 
 
 		auto r = new string();
 		for (int i = 0; i < len; i++) {
@@ -43,8 +43,8 @@ public:
 		alphabets.push_back('e');
 
 
-		std::mt19937 mt(seed);     //  メルセンヌ・ツイスタの32ビット版、引数は初期シード値
-		std::uniform_int_distribution<> rand100(0, alphabetSize - 1);        // [0, 99] 範囲の一様乱数
+		std::mt19937 mt(seed);
+		std::uniform_int_distribution<> rand100(0, alphabetSize - 1); 
 
 		auto r = new string();
 		for (int i = 0; i < len; i++) {
@@ -54,8 +54,8 @@ public:
 	}
 	
 	static std::pair<int, int> CreateRandomIntegerPair(int seed, int max) {
-		std::mt19937 mt(seed);     //  メルセンヌ・ツイスタの32ビット版、引数は初期シード値
-		std::uniform_int_distribution<> rand100(0, max - 1);        // [0, 99] 範囲の一様乱数
+		std::mt19937 mt(seed);
+		std::uniform_int_distribution<> rand100(0, max - 1); 
 
 		int a = rand100(mt);
 		int b = rand100(mt);
@@ -69,9 +69,9 @@ public:
 	
 	static unique_ptr<vector<int>> CreateRandomInteger(int len, int max) {
 		
-		std::random_device rnd;     // 非決定的な乱数生成器を生成
-		std::mt19937 mt(rnd());     //  メルセンヌ・ツイスタの32ビット版、引数は初期シード値
-		std::uniform_int_distribution<> rand100(0, max - 1);        // [0, 99] 範囲の一様乱数
+		std::random_device rnd; 
+		std::mt19937 mt(rnd()); 
+		std::uniform_int_distribution<> rand100(0, max - 1); 
 
 		auto p = new vector<int>();
 
@@ -83,16 +83,16 @@ public:
 	}
 	static int CreateRandomInt(int max, int seed) {
 
-		std::mt19937 mt(seed);     //  メルセンヌ・ツイスタの32ビット版、引数は初期シード値
-		std::uniform_int_distribution<> rand100(0, max - 1);        // [0, 99] 範囲の一様乱数
+		std::mt19937 mt(seed); 
+		std::uniform_int_distribution<> rand100(0, max - 1); 
 		auto value = rand100(mt);
 		return value;
 
 	}
 	static unique_ptr<vector<int>> CreateDeterministicRandomInteger(int len, int max, int seed) {
-		//std::random_device rnd;     // 非決定的な乱数生成器を生成
-		std::mt19937 mt(seed);     //  メルセンヌ・ツイスタの32ビット版、引数は初期シード値
-		std::uniform_int_distribution<> rand100(0, max - 1);        // [0, max] 範囲の一様乱数
+		
+		std::mt19937 mt(seed); 
+		std::uniform_int_distribution<> rand100(0, max - 1); 
 
 		auto p = new vector<int>();
 
@@ -224,7 +224,7 @@ public:
 
 		while (file.get(c))
 		{
-			text[i] = c;//(c=='\n'||c=='\r')?'X':c;
+			text[i] = c;
 			i++;
 		}
 		file.close();

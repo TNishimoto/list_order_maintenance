@@ -27,7 +27,7 @@ public:
 	{
 		int num = 100000;
 		std::mt19937 mt(seed);
-		std::uniform_int_distribution<> rand100(0, (num * 100) - 1); // [0, max] ”ÍˆÍ‚Ìˆê—l—”
+		std::uniform_int_distribution<> rand100(0, (num * 100) - 1);
 		ListOrderMap<int, ListOrderMaintenanceTest> mapper;
 		int p1 = 0;
 		int p2 = 0;
