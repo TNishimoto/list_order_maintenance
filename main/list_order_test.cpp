@@ -15,43 +15,18 @@ using namespace std;
 
 namespace my
 {
-class HeapSort
-{
-public:
-	static uint64_t PROCESSBAR;
-	template <typename T, typename COMPARER>
-	static void sort(vector<T> &vec)
-	{
-		std::set<T, COMPARER> set;
-		uint64_t count = 0;
-		for (auto it : vec)
-		{
-			set.insert(it);
-			count++;
-		}
-		uint64_t t = 0;
-		for (auto it : set)
-		{
-			vec[t++] = it;
-		}
-	}
-};
-uint64_t HeapSort::PROCESSBAR = 100000;
-} // namespace my
-namespace my
-{
 
 class ListOrderMaintenanceTest
 {
 public:
-	bool operator()(const int &a, const int &b) const
+	bool operator()(const uint64_t &a, const uint64_t &b) const
 	{
 		return a < b;
 	}
 	static bool Debug(int seed)
 	{
 		int num = 100000;
-		std::mt19937 mt(seed);										 //  メルセンヌ・ツイスタの32ビット版、引数は初期シード値
+		std::mt19937 mt(seed);
 		std::uniform_int_distribution<> rand100(0, (num * 100) - 1); // [0, max] 範囲の一様乱数
 		ListOrderMap<int, ListOrderMaintenanceTest> mapper;
 		int p1 = 0;
@@ -93,26 +68,6 @@ public:
 		return true;
 	}
 
-	static bool Test(int num)
-	{
-
-		auto p = MyFunction::CreateDeterministicRandomInteger(num, num * 100, 1);
-		ListOrderMap<int, ListOrderMaintenanceTest> listOrderMap;
-		for (auto it : *p)
-		{
-			if (!listOrderMap.contains(it))
-			{
-				listOrderMap.add(it);
-			}
-		}
-
-		for (auto it : listOrderMap.map)
-		{
-			std::cout << it.first << " ";
-		}
-		std::cout << "end" << std::endl;
-		return true;
-	}
 	static bool Test2(uint64_t num)
 	{
 
@@ -133,20 +88,6 @@ public:
 		std::cout << "end" << std::endl;
 		return true;
 	}
-	static bool Test3(int num)
-	{
-
-		auto p = MyFunction::CreateDeterministicRandomInteger(num, num * 100, 1);
-		//auto pp = new HeapSort<int, ListOrderMaintenanceTest>();
-		HeapSort::sort<int, ListOrderMaintenanceTest>(*p);
-
-		for (auto it : *p)
-		{
-			std::cout << it << " ";
-		}
-		std::cout << "end" << std::endl;
-		return true;
-	}
 };
 
 
@@ -155,20 +96,34 @@ public:
 
 void test(int num)
 {
-	std::vector<uint64_t> vec1 = stool::create_deterministic_integers(num, 100, 1);
 
-	std::vector<uint64_t> vec2;
-	for(auto &it : vec1){
-		vec2.push_back(it);
-	}
-	std::sort(vec2.begin(), vec2.end());
-	my::HeapSort::sort<uint64_t, my::ListOrderMaintenanceTest>(vec1);
-	stool::equal_check(vec1, vec2);
+		std::vector<uint64_t> vec = stool::create_deterministic_integers(num, num * 100, 1);
+		my::ListOrderMap<uint64_t, my::ListOrderMaintenanceTest> listOrderMap;
+		for (auto it : vec)
+		{
+			if (!listOrderMap.contains(it))
+			{
+				listOrderMap.add(it);
+			}
+		}
+
+		std::vector<uint64_t> vec2;
+
+		for (auto it : listOrderMap.map)
+		{
+			vec2.push_back(it.first);
+		}
+		for(uint64_t i=1;i<vec2.size();i++){
+			if(vec2[i] <= vec2[i-1]){
+				throw std::logic_error("Error!");
+			}
+		}
+		std::cout << "OK!" << std::endl;
 }
 
 int main()
 {
-	test(23);
+	test(2300);
 	/*
 	for(uint64_t i=0;i<100;i++){
 
