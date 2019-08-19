@@ -5,7 +5,10 @@
 using namespace std;
 
 
-namespace my {
+namespace stool {
+
+namespace LO
+{
 	ListOrderMaintenance::ListOrderMaintenance() : _list() {
 		this->clear();
 	}
@@ -184,4 +187,5 @@ LOInt ListOrderMaintenance::getHalfPosition(const std::list<LOInt>::iterator &x,
 		return --this->_list.end();
 	}
 	*/
+}
 }

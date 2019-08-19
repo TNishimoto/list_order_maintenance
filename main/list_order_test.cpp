@@ -13,16 +13,19 @@
 
 using namespace std;
 
-namespace my
-{
 
 class ListOrderMaintenanceTest
 {
-public:
+	public:
 	bool operator()(const uint64_t &a, const uint64_t &b) const
 	{
 		return a < b;
 	}
+};
+/*
+class ListOrderMaintenanceTest
+{
+public:
 	static bool Debug(int seed)
 	{
 		int num = 100000;
@@ -89,16 +92,14 @@ public:
 		return true;
 	}
 };
+*/
 
-
-
-} // namespace my
 
 void test(int num)
 {
 
 		std::vector<uint64_t> vec = stool::create_deterministic_integers(num, num * 100, 1);
-		my::ListOrderMap<uint64_t, my::ListOrderMaintenanceTest> listOrderMap;
+		stool::LO::ListOrderMap<uint64_t, ListOrderMaintenanceTest> listOrderMap;
 		for (auto it : vec)
 		{
 			if (!listOrderMap.contains(it))

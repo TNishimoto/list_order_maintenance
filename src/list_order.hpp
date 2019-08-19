@@ -10,10 +10,15 @@
 #include <forward_list>
 using namespace std;
 
-namespace my
+namespace stool
 {
+namespace LO
+{
+
+
 //using LOInt = __int128_t;
 using LOInt = uint64_t;
+using LOPointer = std::list<LOInt>::iterator;
 
 class ListOrderLessComparer
 {
@@ -69,5 +74,5 @@ string to_string(__int128_t n);
 #endif
 string to_string(uint64_t n);
 
-
+}
 }

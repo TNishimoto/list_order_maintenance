@@ -1,11 +1,17 @@
 #include "list_order.hpp"
 
-namespace my {
+namespace stool {
+
+namespace LO
+{
 	template <typename T, typename COMPARER>
 	class ListOrderMap {
 		ListOrderMaintenance list;
-
 	public:
+
+		std::map<T, std::list<LOInt>::iterator, COMPARER> map;
+
+
 		void add(T item) {
 			if (this->contains(item)) throw "error";
 			auto ptr = map.upper_bound(item);
@@ -46,7 +52,7 @@ namespace my {
 			return this->list.getBasicLabel(x);
 		}
 
-		std::map<T, std::list<LOInt>::iterator, COMPARER> map;
 
 	};
+}
 }
