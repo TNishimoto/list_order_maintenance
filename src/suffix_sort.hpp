@@ -1,4 +1,5 @@
 #include "../src/list_order_map.hpp"
+#include "stool/src/print.hpp"
 
 namespace stool
 {
@@ -29,8 +30,10 @@ public:
         //this->pointers.push_back(p);
         this->sortedSuffixes.insert(pos);
 
-        auto it = lower_bound(sortedSuffixes.begin(), sortedSuffixes.end(), pos);
+        auto it = sortedSuffixes.find(pos);
+        assert(it != sortedSuffixes.end());
         --it;
+
         auto p = list.insertAfter(this->pointers[*it]);
         this->pointers.push_back(p);
     }
@@ -59,6 +62,24 @@ public:
             sa[x++] = size - it - 1;
         }
         return sa;
+    }
+    void print(){
+        uint64_t size = this->size();
+        std::cout << "---------" << std::endl;
+        for (auto &it : this->sortedSuffixes)
+        {
+            uint64_t p = size - it - 1; 
+            vector<int64_t> vec;
+            int64_t x = it;
+            while(x >= 0){
+                vec.push_back(this->characters[x--]);
+            }
+            string s;
+            stool::Printer::toIntegerString(vec, s);
+            std::cout << p << ": " << s << "/" << *this->pointers[it] << std::endl;
+        }
+                std::cout << "---------" << std::endl;
+
     }
 };
 } // namespace LO
