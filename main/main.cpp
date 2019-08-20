@@ -3,7 +3,6 @@
 #include <memory>
 #include "../src/suffix_sort.hpp"
 #include "stool/src/print.hpp"
-#include "stool/src/sa_bwt_lcp.hpp"
 #include "stool/src/cmdline.h"
 #include "stool/src/io.hpp"
 #include "stool/src/debug.hpp"
@@ -15,23 +14,15 @@
 using namespace std;
 
 void suffix_array_test(vector<uint8_t> &text){
-    if(text[text.size()-1] != 0){
-        throw -1;
-    }
 
-   stool::LO::OnlineBackwardSuffixSort<uint64_t> ss;
-   for(int64_t i=text.size()-2;i >= 0;i--){
-       ss.push((uint64_t)text[i]);
-   //ss.print();
-
-   }
-
-   vector<uint64_t> sa = stool::constructSA<>(text);
-   std::vector<uint64_t> sa2 = ss.to_suffix_array();
+   vector<uint64_t> sa = stool::construct_naive_SA<uint8_t, uint64_t>(text);
+   std::vector<uint64_t> sa2 = stool::LO::OnlineBackwardSuffixSort<uint8_t>::construct_suffix_array(text);
 
 
-    stool::Printer::print(sa);
-    stool::Printer::print(sa2);
+    stool::Printer::print("collect",sa);
+    stool::Printer::print("test   ",sa2);
+
+    
     stool::equal_check(sa, sa2);
 }
 
@@ -46,23 +37,27 @@ int main(int argc, char *argv[]){
 
     if(type == "8"){
         std::vector<char> T;
-        stool::load_vector(inputFile, T);
+        stool::load_vector(inputFile, T, false);
+        std::cout << stool::Printer::toString(T, 0) << std::endl;
+    
     }else if(type == "uchar"){
-        std::vector<uint8_t> T = stool::load_text_from_file(inputFile);
+        std::vector<uint8_t> T;
+        stool::load_vector(inputFile, T, false);
+
         suffix_array_test(T);
         //std::cout << stool::Printer::toString(T, 0) << std::endl;
     }else if(type == "32"){
         std::vector<int32_t> T;
-        stool::load_vector(inputFile, T);
+        stool::load_vector(inputFile, T, false);
     }else if(type == "u32"){
         std::vector<uint32_t> T;
-        stool::load_vector(inputFile, T);
+        stool::load_vector(inputFile, T, false);
     }else if(type == "64"){
         std::vector<int64_t> T;
-        stool::load_vector(inputFile, T);
+        stool::load_vector(inputFile, T, false);
     }else if(type == "u64"){
         std::vector<uint64_t> T;
-        stool::load_vector(inputFile, T);
+        stool::load_vector(inputFile, T, false);
     }else{
         throw std::runtime_error("error!");
     }

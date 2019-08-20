@@ -14,16 +14,11 @@ set(CMAKE_CXX_FLAGS_RELEASE  "-O3 -DNDEBUG")
 
 FILE(GLOB SOURCES src/*.cpp)
 INCLUDE_DIRECTORIES(module)
-FILE(GLOB STOOL_SOURCES module/stool/src/*.cpp)
+FILE(GLOB STOOL_SOURCES module/stool/src/io.cpp)
 
-
-LINK_DIRECTORIES(~/lib)
-INCLUDE_DIRECTORIES(~/include)
 
 add_executable(a.out ${SOURCES} ${STOOL_SOURCES} ./main/list_order_test.cpp)
 add_executable(b.out ${SOURCES} ${STOOL_SOURCES} ./main/main.cpp)
-target_link_libraries(a.out divsufsort divsufsort64)
-target_link_libraries(b.out divsufsort divsufsort64)
 
 #target_link_libraries(a.out fn)
 

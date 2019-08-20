@@ -10,7 +10,7 @@ struct OnlineBackwardSuffixSortComparer
 {
     static std::vector<T> *characters;
     static std::vector<stool::LO::LOPointer> *pointers;
-    
+
     bool operator()(const uint64_t &a, const uint64_t &b) const;
 };
 
@@ -48,7 +48,7 @@ public:
     }
     uint64_t size()
     {
-        return this->characters.size();
+        return this->characters.size()-1;
     }
     std::vector<uint64_t> to_suffix_array()
     {
@@ -57,29 +57,42 @@ public:
         std::vector<uint64_t> sa;
         sa.resize(size);
         uint64_t x = 0;
-        for (auto &it : this->sortedSuffixes)
-        {
-            sa[x++] = size - it - 1;
+
+        auto it = this->sortedSuffixes.begin();
+        ++it;
+        while(it != this->sortedSuffixes.end()){
+            sa[x++] = size - (*it);
+            ++it;
         }
         return sa;
     }
-    void print(){
-        uint64_t size = this->size();
+    static std::vector<uint64_t> construct_suffix_array(const std::vector<T> &text)
+    {
+        stool::LO::OnlineBackwardSuffixSort<T> ss;
+        for (int64_t i = text.size() - 1; i >= 0; i--)
+        {
+            ss.push((uint64_t)text[i]);
+        }
+        return ss.to_suffix_array();
+    }
+    void print()
+    {
+        uint64_t size = this->size() + 1;
         std::cout << "---------" << std::endl;
         for (auto &it : this->sortedSuffixes)
         {
-            uint64_t p = size - it - 1; 
+            uint64_t p = size - it - 1;
             vector<int64_t> vec;
             int64_t x = it;
-            while(x >= 0){
+            while (x >= 0)
+            {
                 vec.push_back(this->characters[x--]);
             }
             string s;
             stool::Printer::toIntegerString(vec, s);
             std::cout << p << ": " << s << "/" << *this->pointers[it] << std::endl;
         }
-                std::cout << "---------" << std::endl;
-
+        std::cout << "---------" << std::endl;
     }
 };
 } // namespace LO

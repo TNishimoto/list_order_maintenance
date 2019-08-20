@@ -5,14 +5,43 @@ namespace stool
 namespace LO
 {
 
-template <>
-std::vector<uint64_t> *OnlineBackwardSuffixSortComparer<uint64_t>::characters = nullptr;
-template <>
-std::vector<stool::LO::LOPointer> *OnlineBackwardSuffixSortComparer<uint64_t>::pointers = nullptr;
+template<> std::vector<uint64_t> *OnlineBackwardSuffixSortComparer<uint64_t>::characters = nullptr;
+template<> std::vector<uint32_t> *OnlineBackwardSuffixSortComparer<uint32_t>::characters = nullptr;
+template<> std::vector<uint8_t> *OnlineBackwardSuffixSortComparer<uint8_t>::characters = nullptr;
+template<> std::vector<int64_t> *OnlineBackwardSuffixSortComparer<int64_t>::characters = nullptr;
+template<> std::vector<int32_t> *OnlineBackwardSuffixSortComparer<int32_t>::characters = nullptr;
+template<> std::vector<int8_t> *OnlineBackwardSuffixSortComparer<int8_t>::characters = nullptr;
+
+
+template<> std::vector<stool::LO::LOPointer> *OnlineBackwardSuffixSortComparer<uint64_t>::pointers = nullptr;
+template<> std::vector<stool::LO::LOPointer> *OnlineBackwardSuffixSortComparer<uint32_t>::pointers = nullptr;
+template<> std::vector<stool::LO::LOPointer> *OnlineBackwardSuffixSortComparer<uint8_t>::pointers = nullptr;
+template<> std::vector<stool::LO::LOPointer> *OnlineBackwardSuffixSortComparer<int64_t>::pointers = nullptr;
+template<> std::vector<stool::LO::LOPointer> *OnlineBackwardSuffixSortComparer<int32_t>::pointers = nullptr;
+template<> std::vector<stool::LO::LOPointer> *OnlineBackwardSuffixSortComparer<int8_t>::pointers = nullptr;
+
+
+template struct OnlineBackwardSuffixSortComparer<uint64_t>;
+template struct OnlineBackwardSuffixSortComparer<uint32_t>;
+template struct OnlineBackwardSuffixSortComparer<uint8_t>;
+template struct OnlineBackwardSuffixSortComparer<int64_t>;
+template struct OnlineBackwardSuffixSortComparer<int32_t>;
+template struct OnlineBackwardSuffixSortComparer<int8_t>;
+
+
+template class OnlineBackwardSuffixSort<uint64_t>;
+template class OnlineBackwardSuffixSort<uint32_t>;
+template class OnlineBackwardSuffixSort<uint8_t>;
+template class OnlineBackwardSuffixSort<int64_t>;
+template class OnlineBackwardSuffixSort<int32_t>;
+template class OnlineBackwardSuffixSort<int8_t>;
+
 
 template <typename T>
 bool OnlineBackwardSuffixSortComparer<T>::operator()(const uint64_t &a, const uint64_t &b) const
 {
+    if(a == 0) return true;
+    
     const T c1 = (*OnlineBackwardSuffixSortComparer::characters)[a];
     const T c2 = (*OnlineBackwardSuffixSortComparer::characters)[b];
 
@@ -24,25 +53,9 @@ bool OnlineBackwardSuffixSortComparer<T>::operator()(const uint64_t &a, const ui
     {
         const stool::LO::LOPointer p1 = (*OnlineBackwardSuffixSortComparer::pointers)[a - 1];
         const stool::LO::LOPointer p2 = (*OnlineBackwardSuffixSortComparer::pointers)[b - 1];
-        /*
-    const T b1 = (*OnlineBackwardSuffixSortComparer::characters)[a-1];
-    const T b2 = (*OnlineBackwardSuffixSortComparer::characters)[b-1];
-        if(b1 < b2){
-            std::cout << b1 << "<" << b2<< std::endl;
-            if(*p1 > *p2){
-                std::cout << a << "/" << b << std::endl;
-            }
-            assert(*p1 < *p2);
-        }else if(b2 < b1){
-            std::cout << b1 << ">" << b2 << std::endl;
-            assert(*p1 > *p2);
-        }
-        */
-
         return *p1 < *p2;
     }
 }
-template struct OnlineBackwardSuffixSortComparer<uint64_t>;
 
 template <typename T>
 void OnlineBackwardSuffixSort<T>::set_comparer_pointers()
@@ -51,7 +64,6 @@ void OnlineBackwardSuffixSort<T>::set_comparer_pointers()
     OnlineBackwardSuffixSortComparer<T>::pointers = &this->pointers;
 }
 
-template class OnlineBackwardSuffixSort<uint64_t>;
 
 
 } // namespace LO
