@@ -17,27 +17,30 @@ struct OnlineBackwardSuffixSortComparer
 template <typename T>
 class OnlineBackwardSuffixSort
 {
-public:
+private:
     std::vector<T> characters;
     std::vector<stool::LO::LOPointer> pointers;
     std::set<uint64_t, OnlineBackwardSuffixSortComparer<T>> sortedSuffixes;
     ListOrderMaintenance list;
+    void set_comparer_pointers();
+
+public:
     void push(T item)
     {
         uint64_t pos = this->characters.size();
         this->characters.push_back(item);
-        //auto p = list.insertAfter();
-        //this->pointers.push_back(p);
         this->sortedSuffixes.insert(pos);
 
         auto it = sortedSuffixes.find(pos);
+
         assert(it != sortedSuffixes.end());
         --it;
 
         auto p = list.insertAfter(this->pointers[*it]);
+
         this->pointers.push_back(p);
+
     }
-    void set_comparer_pointers();
     OnlineBackwardSuffixSort()
     {
         this->set_comparer_pointers();
@@ -46,6 +49,7 @@ public:
         this->pointers.push_back(p);
         this->sortedSuffixes.insert(0);
     }
+    
     uint64_t size()
     {
         return this->characters.size()-1;
@@ -71,8 +75,9 @@ public:
         stool::LO::OnlineBackwardSuffixSort<T> ss;
         for (int64_t i = text.size() - 1; i >= 0; i--)
         {
-            ss.push((uint64_t)text[i]);
+            ss.push(text[i]);
         }
+
         return ss.to_suffix_array();
     }
     void print()
@@ -82,13 +87,13 @@ public:
         for (auto &it : this->sortedSuffixes)
         {
             uint64_t p = size - it - 1;
-            vector<int64_t> vec;
+            std::vector<int64_t> vec;
             int64_t x = it;
             while (x >= 0)
             {
                 vec.push_back(this->characters[x--]);
             }
-            string s;
+            std::string s;
             stool::Printer::toIntegerString(vec, s);
             std::cout << p << ": " << s << "/" << *this->pointers[it] << std::endl;
         }

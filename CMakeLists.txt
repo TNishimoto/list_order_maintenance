@@ -19,6 +19,8 @@ FILE(GLOB STOOL_SOURCES module/stool/src/io.cpp)
 
 add_executable(a.out ${SOURCES} ${STOOL_SOURCES} ./main/list_order_test.cpp)
 add_executable(b.out ${SOURCES} ${STOOL_SOURCES} ./main/main.cpp)
+add_executable(random.out ${SOURCES} ${STOOL_SOURCES} ./main/random_test.cpp)
+add_executable(sa_sample.out ${SOURCES} ${STOOL_SOURCES} ./main/sa_sample.cpp)
 
 #target_link_libraries(a.out fn)
 

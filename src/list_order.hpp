@@ -8,7 +8,7 @@
 #include <map>
 #include <set>
 #include <forward_list>
-using namespace std;
+//using namespace std;
 
 namespace stool
 {
@@ -70,9 +70,9 @@ class ListOrderMaintenance
 	void clear();
 };
 #ifdef _INT128
-string to_string(__int128_t n);
+std::string to_string(__int128_t n);
 #endif
-string to_string(uint64_t n);
+std::string to_string(uint64_t n);
 
 }
 }

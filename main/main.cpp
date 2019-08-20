@@ -37,15 +37,11 @@ int main(int argc, char *argv[]){
 
     if(type == "8"){
         std::vector<char> T;
-        stool::load_vector(inputFile, T, false);
-        std::cout << stool::Printer::toString(T, 0) << std::endl;
-    
+        stool::load_vector(inputFile, T, false);    
     }else if(type == "uchar"){
         std::vector<uint8_t> T;
         stool::load_vector(inputFile, T, false);
-
         suffix_array_test(T);
-        //std::cout << stool::Printer::toString(T, 0) << std::endl;
     }else if(type == "32"){
         std::vector<int32_t> T;
         stool::load_vector(inputFile, T, false);
