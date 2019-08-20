@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <memory>
-#include "../src/suffix_sort.hpp"
+#include "../src/online_suffix_sort.hpp"
 #include "stool/src/print.hpp"
 #include "stool/src/cmdline.h"
 #include "stool/src/io.hpp"
@@ -16,7 +16,7 @@ using namespace std;
 void suffix_array_test(vector<uint8_t> &text){
 
    vector<uint64_t> sa = stool::construct_naive_SA<uint8_t, uint64_t>(text);
-   std::vector<uint64_t> sa2 = stool::LO::OnlineBackwardSuffixSort<uint8_t>::construct_suffix_array(text);
+   std::vector<uint64_t> sa2 = stool::LO::construct_suffix_array(text);
 
 
     stool::Printer::print("collect",sa);
