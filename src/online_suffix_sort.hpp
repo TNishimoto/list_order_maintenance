@@ -1,5 +1,6 @@
 #include "../src/list_order_map.hpp"
 #include "stool/src/print.hpp"
+#include <cassert>
 
 namespace stool
 {
