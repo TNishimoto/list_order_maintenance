@@ -21,7 +21,7 @@ add_executable(a.out ${SOURCES} ${STOOL_SOURCES} ./main/list_order_test.cpp)
 add_executable(b.out ${SOURCES} ${STOOL_SOURCES} ./main/main.cpp)
 add_executable(random.out ${SOURCES} ${STOOL_SOURCES} ./main/random_test.cpp)
 add_executable(sa_sample.out ${SOURCES} ${STOOL_SOURCES} ./main/sa_sample.cpp)
-add_executable(comp_sa.out ${SOURCES} ${STOOL_SOURCES} ./main/comp_sa.cpp)
+add_executable(dsa.out ${SOURCES} ${STOOL_SOURCES} ./main/dsa.cpp)
 
 #target_link_libraries(a.out fn)
 
