@@ -12,47 +12,60 @@
 
 using namespace std;
 
+void print_vec(stool::LO::ListOrderMaintenance &list,std::vector<std::list<stool::LO::LOInt>::iterator> &vec){
+    
+        std::cout << "[";
+		for(uint64_t i=0;i<vec.size();i++){
+            std::cout << list.getBasicLabel(vec[i]);
+            if(i + 1 != vec.size()){
+                std::cout << ", ";
+            }
+		}
+        std::cout << "]";
+        std::cout << std::endl;
+}
 
-class ListOrderMaintenanceTest
+void test()
 {
-	public:
-	bool operator()(const uint64_t &a, const uint64_t &b) const
-	{
-		return a < b;
-	}
-};
+		stool::LO::ListOrderMaintenance list;
+        std::vector<std::list<stool::LO::LOInt>::iterator> vec;
+
+        auto ptr1 = list.insertAfter();
+        vec.push_back(ptr1);
+        auto ptr5 = list.insertAfter(ptr1);
+        vec.push_back(ptr5);
+
+        auto ptr3 = list.insertAfter(ptr1);
+        vec.insert(vec.begin() + 1,ptr3);
+
+        auto ptr2 = list.insertAfter(ptr1);
+        vec.insert(vec.begin() + 1,ptr2);
+
+        auto ptr4 = list.insertAfter(ptr3);
+        vec.insert(vec.begin() + 3,ptr4);
 
 
-void test(int num)
-{
+        print_vec(list, vec);
 
-		std::vector<uint64_t> vec = stool::create_deterministic_integers<uint64_t>(num, num * 100, 0, 1);
-		stool::LO::ListOrderMap<uint64_t, ListOrderMaintenanceTest> listOrderMap;
-		for (auto it : vec)
-		{
-			if (!listOrderMap.contains(it))
-			{
-				listOrderMap.add(it);
-			}
-		}
+        std::cout << "The label of ptr1 pointer = " << list.getBasicLabel(ptr1) << std::endl;
+        std::cout << "The label of ptr2 pointer = " << list.getBasicLabel(ptr2) << std::endl;
+        std::cout << "ptr1 < ptr2 ? = " << list.order(ptr1, ptr2) << std::endl;
+        std::cout << "ptr2 > ptr1 ? = " << list.order(ptr2, ptr1) << std::endl;
 
-		std::vector<uint64_t> vec2;
+        list.remove(ptr3);
+        vec.erase(vec.begin() + 2 );
+        print_vec(list, vec);
 
-		for (auto it : listOrderMap.map)
-		{
-			vec2.push_back(it.first);
-		}
-		for(uint64_t i=1;i<vec2.size();i++){
-			if(vec2[i] <= vec2[i-1]){
-				throw std::logic_error("Error!");
-			}
-		}
-		std::cout << "OK!" << std::endl;
+        list.clear();
+        vec.clear();
+
+
+
 }
 
 int main()
 {
-	test(2300);
+	test();
 
 	return 0;
 }

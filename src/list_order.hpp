@@ -62,6 +62,11 @@ class ListOrderMaintenance
 	bool remove(std::list<LOInt>::iterator &x);
 	const std::list<LOInt>::iterator insertAfter(const std::list<LOInt>::iterator &x);
 	const std::list<LOInt>::iterator insertAfter();
+
+	bool order(const std::list<LOInt>::iterator &x, const std::list<LOInt>::iterator &y){
+		return this->getBasicLabel(x) < this->getBasicLabel(y);
+	}
+
 	ListOrderMaintenance();
 	virtual ~ListOrderMaintenance()
 	{
