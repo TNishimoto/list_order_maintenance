@@ -22,7 +22,9 @@ add_executable(list_order_test.out ${SOURCES} ${STOOL_SOURCES} ./main/list_order
 #add_executable(b.out ${SOURCES} ${STOOL_SOURCES} ./main/main.cpp)
 add_executable(random.out ${SOURCES} ${STOOL_SOURCES} ./main/random_test.cpp)
 add_executable(sa_sample.out ${SOURCES} ${STOOL_SOURCES} ./main/sa_sample.cpp)
-add_executable(dsa.out ${SOURCES} ${STOOL_SOURCES} ./main/dsa.cpp)
+add_executable(text_to_bwt.out ${SOURCES} ${STOOL_SOURCES} ./main/text_to_bwt_main.cpp)
+
+#add_executable(dsa.out ${SOURCES} ${STOOL_SOURCES} ./main/dsa.cpp)
 
 #target_link_libraries(a.out fn)
 
