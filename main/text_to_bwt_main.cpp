@@ -5,7 +5,7 @@
 #include <vector>
 #include <random>
 #include <chrono>
-#include "divsufsort64.h"
+//#include "divsufsort64.h"
 #include "stool/src/cmdline.h"
 #include "../src/online_suffix_sort.hpp"
 #include "stool/src/print.hpp"
