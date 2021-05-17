@@ -177,7 +177,7 @@ int main(int argc, char *argv[])
     p.add<string>("input_file", 'i', "input file path", true);
     p.add<string>("output_file", 'o', "output bwt file path", false, "");
     //p.add<int64_t>("special_character", 's', "special character", false, 0);
-    p.add<string>("char_type", 'o', "char_type", false, "u8");
+    p.add<string>("char_type", 'c', "char_type", false, "u8");
 
     p.parse_check(argc, argv);
     string inputFile = p.get<string>("input_file");
