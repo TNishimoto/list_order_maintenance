@@ -79,83 +79,17 @@ bool write(string filename, std::vector<T> &text)
 
     return true;
 }
-void constructOccCharVec(const std::vector<uint8_t> &text, std::vector<bool> &output)
-{
-    output.resize(256, false);
-    for (uint64_t i = 0; i < text.size(); i++)
-    {
-        output[text[i]] = true;
-    }
-}
-void replace(std::vector<uint8_t> &text, uint8_t oldChar, uint8_t newChar)
-{
-    for (uint64_t i = 0; i < text.size(); i++)
-    {
-        if (text[i] == oldChar)
-        {
-            text[i] = newChar;
-        }
-    }
-}
-void sanityze(std::vector<uint8_t> &text)
-{
-    std::vector<bool> occVec;
-    constructOccCharVec(text, occVec);
-    if (occVec[0])
-    {
-        std::cout << "This text contains character 0" << std::endl;
-        uint8_t replaceChar = 0;
-        for (uint64_t i = 1; i < occVec.size(); i++)
-        {
-            if (i != 8 && !occVec[i])
-            {
-                replaceChar = i;
-                break;
-            }
-        }
-        if (replaceChar != 0)
-        {
-            std::cout << "We replace the character 0 with " << (int)replaceChar << "." << std::endl;
-            replace(text, 0, replaceChar);
-        }
-        else
-        {
-            std::cout << "We cannot replace the character 0." << std::endl;
-            throw -1;
-        }
-    }
-
-    if (occVec[8])
-    {
-        std::cout << "This text contains character 8" << std::endl;
-        uint8_t replaceChar = 8;
-        for (uint64_t i = 9; i < occVec.size(); i++)
-        {
-            if (!occVec[i])
-            {
-                replaceChar = i;
-                break;
-            }
-        }
-        if (replaceChar != 8)
-        {
-            std::cout << "We replace the character 8 with " << (int)replaceChar << "." << std::endl;
-            replace(text, 8, replaceChar);
-        }
-        else
-        {
-            std::cout << "We cannot replace the character 8." << std::endl;
-            throw -1;
-        }
-    }
-}
 template <typename T>
 void load_text_build_bwt_write_bwt(string &input, string &output)
 {
     std::vector<T> text;
+    std::cout << "Loading Text..." << std::endl;
     load<T>(input, text);
+    std::cout << "Constructing Suffix Array..." << std::endl;
     std::vector<uint64_t> sa = stool::LO::construct_suffix_array(text);
     std::vector<T> bwt;
+    std::cout << "Constructing BWT..." << std::endl;
+
     bwt.resize(text.size());
     for (uint64_t i = 0; i < text.size(); i++)
     {
@@ -177,7 +111,7 @@ int main(int argc, char *argv[])
     p.add<string>("input_file", 'i', "input file path", true);
     p.add<string>("output_file", 'o', "output bwt file path", false, "");
     //p.add<int64_t>("special_character", 's', "special character", false, 0);
-    p.add<string>("char_type", 'c', "char_type", false, "u8");
+    p.add<string>("char_type", 'c', "char_type", true, "u8");
 
     p.parse_check(argc, argv);
     string inputFile = p.get<string>("input_file");
@@ -211,38 +145,4 @@ int main(int argc, char *argv[])
         throw -1;
     }
 
-    /*
-    uint8_t sc = 0;
-    if(specialCharacter.size() > 0){
-        sc = specialCharacter[0];
-    }
-    std::cout << "Special character: " << sc << "(" << (uint)sc << ")" << std::endl;
-    if (outputFile.size() == 0)
-    {
-            outputFile = inputFile + ".bwt";
-    }
-    std::vector<uint8_t> text;
-    load(inputFile, text);
-    sanityze(text);
-
-    text.push_back(sc);
-    std::vector<uint8_t> bwt = construct_bwt(text);
-
-    if(bwt.size() < 100){
-        std::cout << "Input Text: ";
-        for(auto c : text){
-            std::cout << c;
-        }
-        std::cout << std::endl;
-
-        std::cout << "Output BWT: ";
-        for(auto c : bwt){
-            std::cout << c;
-        }
-        std::cout << std::endl;
-        
-    }
-
-    write(outputFile, bwt);
-    */
 }

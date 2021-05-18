@@ -71,10 +71,21 @@ public:
     {
         this->set_comparer_pointers();
 
-        stool::Counter counter;
+        //stool::Counter counter;
+        uint64_t counterMax = (text.size() / 100) + 1;
+        uint64_t counter = counterMax;
+        uint64_t counterID = 0;
+        uint64_t counter_sum = 0;
         for (auto it = text.rbegin();it!=text.rend();++it)
         {
-            counter.increment();
+            counter--;
+            if(counter == 0){
+                counter_sum += counterMax;
+                std::cout << "Processing(" << counterID << "/" << "100" << "): [" << counter_sum << "/" << text.size() << "]" << std::endl;
+                counter = counterMax;
+                counterID++;
+            }
+            //counter.increment();
             this->push(*it);
         }
         std::cout << std::endl;
