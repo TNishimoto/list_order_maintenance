@@ -11,6 +11,7 @@ template<> std::vector<uint16_t> *OnlineBackwardSuffixSortComparer<uint16_t>::ch
 template<> std::vector<uint8_t> *OnlineBackwardSuffixSortComparer<uint8_t>::characters = nullptr;
 template<> std::vector<int64_t> *OnlineBackwardSuffixSortComparer<int64_t>::characters = nullptr;
 template<> std::vector<int32_t> *OnlineBackwardSuffixSortComparer<int32_t>::characters = nullptr;
+template<> std::vector<int16_t> *OnlineBackwardSuffixSortComparer<int16_t>::characters = nullptr;
 template<> std::vector<int8_t> *OnlineBackwardSuffixSortComparer<int8_t>::characters = nullptr;
 template<> std::vector<char> *OnlineBackwardSuffixSortComparer<char>::characters = nullptr;
 
@@ -21,6 +22,7 @@ template<> std::vector<stool::LO::LOPointer> *OnlineBackwardSuffixSortComparer<u
 template<> std::vector<stool::LO::LOPointer> *OnlineBackwardSuffixSortComparer<uint8_t>::pointers = nullptr;
 template<> std::vector<stool::LO::LOPointer> *OnlineBackwardSuffixSortComparer<int64_t>::pointers = nullptr;
 template<> std::vector<stool::LO::LOPointer> *OnlineBackwardSuffixSortComparer<int32_t>::pointers = nullptr;
+template<> std::vector<stool::LO::LOPointer> *OnlineBackwardSuffixSortComparer<int16_t>::pointers = nullptr;
 template<> std::vector<stool::LO::LOPointer> *OnlineBackwardSuffixSortComparer<int8_t>::pointers = nullptr;
 template<> std::vector<stool::LO::LOPointer> *OnlineBackwardSuffixSortComparer<char>::pointers = nullptr;
 
@@ -50,6 +52,7 @@ template struct OnlineBackwardSuffixSortComparer<uint16_t>;
 template struct OnlineBackwardSuffixSortComparer<uint8_t>;
 template struct OnlineBackwardSuffixSortComparer<int64_t>;
 template struct OnlineBackwardSuffixSortComparer<int32_t>;
+template struct OnlineBackwardSuffixSortComparer<int16_t>;
 template struct OnlineBackwardSuffixSortComparer<int8_t>;
 template struct OnlineBackwardSuffixSortComparer<char>;
 
@@ -70,6 +73,7 @@ template class OnlineBackwardSuffixSort<uint16_t>;
 template class OnlineBackwardSuffixSort<uint8_t>;
 template class OnlineBackwardSuffixSort<int64_t>;
 template class OnlineBackwardSuffixSort<int32_t>;
+template class OnlineBackwardSuffixSort<int16_t>;
 template class OnlineBackwardSuffixSort<int8_t>;
 template class OnlineBackwardSuffixSort<char>;
 

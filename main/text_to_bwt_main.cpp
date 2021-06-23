@@ -80,6 +80,37 @@ bool write(string filename, std::vector<T> &text)
     return true;
 }
 template <typename T>
+bool write_plain(string filename, std::vector<T> &text)
+{
+    std::cout << "writing: " << filename << std::endl;
+    auto start = std::chrono::system_clock::now();
+
+    std::string outputStr;
+    for(uint64_t i=0;i<text.size();i++){
+        std::string s = std::to_string(text[i]);
+        for(auto c : s){
+            outputStr.push_back(c);
+        }
+        if(i < text.size() -1){
+            outputStr.push_back(',');
+        }
+
+    }
+
+    ofstream os(filename, ios::out | ios::binary);
+    if (!os)
+        return 1;
+    os.write((const char *)(&outputStr[0]), sizeof(char) * outputStr.size());
+    os.close();
+    auto end = std::chrono::system_clock::now();
+    double elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+    std::cout << "wrote: " << filename << ", time = " << elapsed << std::endl;
+
+    return true;
+}
+
+
+template <typename T>
 void load_text_build_bwt_write_bwt(string &input, string &output)
 {
     std::vector<T> text;
@@ -102,9 +133,9 @@ void load_text_build_bwt_write_bwt(string &input, string &output)
             bwt[i] = text[sa[i] - 1];
         }
     }
+    write_plain(output + ".plain.txt", bwt);
     write<T>(output, bwt);
 }
-
 int main(int argc, char *argv[])
 {
     cmdline::parser p;
@@ -139,6 +170,22 @@ int main(int argc, char *argv[])
     else if (char_type == "u64")
     {
         load_text_build_bwt_write_bwt<uint64_t>(inputFile, outputFile);
+    }
+    else if (char_type == "i8")
+    {
+        load_text_build_bwt_write_bwt<int8_t>(inputFile, outputFile);
+    }
+    else if (char_type == "i16")
+    {
+        load_text_build_bwt_write_bwt<int16_t>(inputFile, outputFile);
+    }
+    else if (char_type == "i32")
+    {
+        load_text_build_bwt_write_bwt<int32_t>(inputFile, outputFile);
+    }
+    else if (char_type == "i64")
+    {
+        load_text_build_bwt_write_bwt<int64_t>(inputFile, outputFile);
     }
     else
     {
