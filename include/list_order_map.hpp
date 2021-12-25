@@ -2,7 +2,7 @@
 
 namespace stool {
 
-namespace LO
+namespace lom
 {
 	template <typename T, typename COMPARER>
 	class ListOrderMap {

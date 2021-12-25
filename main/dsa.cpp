@@ -1,11 +1,11 @@
 #include <iostream>
 #include <string>
 #include <memory>
-#include "../src/online_suffix_sort.hpp"
-#include "stool/src/print.hpp"
-#include "stool/src/cmdline.h"
-#include "stool/src/io.hpp"
-#include "stool/src/debug.hpp"
+#include "../include/online_suffix_sort.hpp"
+#include "stool/include/print.hpp"
+#include "stool/include/cmdline.h"
+#include "stool/include/io.hpp"
+#include "stool/include/debug.hpp"
 
 using namespace std;
 
@@ -43,9 +43,9 @@ void mainfunc(std::string input, std::string outputFile)
     std::cout << "Loading Text..." << std::endl;
     load<T>(input, text);
     std::cout << "Constructing Diff Suffix Array..." << std::endl;
-    std::vector<int64_t> dsa = stool::LO::construct_differential_suffix_array(text);
+    std::vector<int64_t> dsa = stool::lom::construct_differential_suffix_array(text);
 
-    stool::write_vector(outputFile, dsa, false);
+    stool::IO::write(outputFile, dsa);
 
     auto end = std::chrono::system_clock::now();
     double elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();

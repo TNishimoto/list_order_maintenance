@@ -6,9 +6,9 @@
 #include <random>
 #include <chrono>
 //#include "divsufsort64.h"
-#include "stool/src/cmdline.h"
-#include "../src/online_suffix_sort.hpp"
-#include "stool/src/print.hpp"
+#include "stool/include/cmdline.h"
+#include "../include/online_suffix_sort.hpp"
+#include "stool/include/print.hpp"
 
 using namespace std;
 
@@ -117,7 +117,7 @@ void load_text_build_bwt_write_bwt(string &input, string &output)
     std::cout << "Loading Text..." << std::endl;
     load<T>(input, text);
     std::cout << "Constructing Suffix Array..." << std::endl;
-    std::vector<uint64_t> sa = stool::LO::construct_suffix_array(text);
+    std::vector<uint64_t> sa = stool::lom::construct_suffix_array(text);
     std::vector<T> bwt;
     std::cout << "Constructing BWT..." << std::endl;
 

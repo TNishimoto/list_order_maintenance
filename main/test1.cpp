@@ -1,11 +1,11 @@
 #include <iostream>
 #include <string>
 #include <memory>
-#include "../src/online_suffix_sort.hpp"
-#include "stool/src/print.hpp"
-#include "stool/src/cmdline.h"
-#include "stool/src/io.hpp"
-#include "stool/src/debug.hpp"
+#include "../include/online_suffix_sort.hpp"
+#include "stool/include/print.hpp"
+#include "stool/include/cmdline.h"
+#include "stool/include/io.hpp"
+#include "stool/include/debug.hpp"
 
 //#include "stool/src/cmdline.h"
 //#include "stool/src/io.hpp"
@@ -16,7 +16,7 @@ using namespace std;
 void suffix_array_test(vector<uint8_t> &text){
 
    vector<uint64_t> sa = stool::construct_naive_SA<uint8_t, uint64_t>(text);
-   std::vector<uint64_t> sa2 = stool::LO::construct_suffix_array(text);
+   std::vector<uint64_t> sa2 = stool::lom::construct_suffix_array(text);
 
 
     stool::Printer::print("collect",sa);
@@ -59,7 +59,7 @@ int main(int argc, char *argv[]){
     }
  
     /*
-   stool::LO::OnlineBackwardSuffixSort<uint64_t> ss;
+   stool::lom::OnlineBackwardSuffixSort<uint64_t> ss;
    std::string s = "misissippi";
    for(int64_t i=s.size()-1;i > 0;i--){
        ss.push((uint64_t)s[i]);

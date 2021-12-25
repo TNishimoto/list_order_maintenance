@@ -1,4 +1,4 @@
-#include "list_order.hpp"
+#include "../include/list_order.hpp"
 #include <string>
 #include <iostream>
 #include <iomanip>
@@ -7,7 +7,7 @@ using namespace std;
 
 namespace stool {
 
-namespace LO
+namespace lom
 {
 	ListOrderMaintenance::ListOrderMaintenance() : _list() {
 		this->clear();
@@ -110,7 +110,7 @@ namespace LO
 			return true;
 		}
 	}
-	void ListOrderMaintenance::print(const std::list<LOInt>::iterator& x) {
+	void ListOrderMaintenance::print([[maybe_unused]]  const std::list<LOInt>::iterator& x) {
 		/*
 		for (auto &v : this->_list) {
 			//std::cout << setw(19) << v << " " << std::flush;

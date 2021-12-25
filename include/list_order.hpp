@@ -12,7 +12,7 @@
 
 namespace stool
 {
-namespace LO
+namespace lom
 {
 
 

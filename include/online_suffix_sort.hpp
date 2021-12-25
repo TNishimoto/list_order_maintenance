@@ -1,16 +1,16 @@
-#include "../src/list_order_map.hpp"
-#include "stool/src/print.hpp"
+#include "./list_order_map.hpp"
+#include "stool/include/print.hpp"
 #include <cassert>
 
 namespace stool
 {
-namespace LO
+namespace lom
 {
 template <typename T>
 struct OnlineBackwardSuffixSortComparer
 {
     static std::vector<T> *characters;
-    static std::vector<stool::LO::LOPointer> *pointers;
+    static std::vector<stool::lom::LOPointer> *pointers;
 
     bool operator()(const uint64_t &a, const uint64_t &b) const;
 };
@@ -20,7 +20,7 @@ class OnlineBackwardSuffixSort
 {
 private:
     std::vector<T> characters;
-    std::vector<stool::LO::LOPointer> pointers;
+    std::vector<stool::lom::LOPointer> pointers;
     std::set<uint64_t, OnlineBackwardSuffixSortComparer<T>> sortedSuffixes;
     ListOrderMaintenance list;
     void set_comparer_pointers();
@@ -118,7 +118,7 @@ public:
     /*
     static std::vector<uint64_t> construct_suffix_array(const std::vector<T> &text)
     {
-        stool::LO::OnlineBackwardSuffixSort<T> ss;
+        stool::lom::OnlineBackwardSuffixSort<T> ss;
         for (int64_t i = text.size() - 1; i >= 0; i--)
         {
             ss.push(text[i]);
@@ -151,7 +151,7 @@ public:
 template <typename T, typename INDEX = uint64_t>
 std::vector<INDEX> construct_suffix_array(const std::vector<T> &text)
 {
-    stool::LO::OnlineBackwardSuffixSort<T> ss(text);
+    stool::lom::OnlineBackwardSuffixSort<T> ss(text);
     return ss.template to_suffix_array<INDEX>();
 };
 
@@ -159,7 +159,7 @@ template <typename T>
 std::vector<T> construct_bwt(const std::vector<T> &text)
 {
 
-    stool::LO::OnlineBackwardSuffixSort<T> ss(text);
+    stool::lom::OnlineBackwardSuffixSort<T> ss(text);
     std::vector<T> r;
     for (auto &it : ss)
     {
@@ -174,7 +174,7 @@ template <typename T>
 std::vector<std::pair<T, uint64_t>> construct_rlbwt(const std::vector<T> &text)
 {
 
-    stool::LO::OnlineBackwardSuffixSort<T> ss(text);
+    stool::lom::OnlineBackwardSuffixSort<T> ss(text);
     std::vector<std::pair<T, uint64_t>> r;
 
     T character;
@@ -210,7 +210,7 @@ template <typename T>
 std::vector<int64_t> construct_differential_suffix_array(const std::vector<T> &text)
 {
     
-    stool::LO::OnlineBackwardSuffixSort<T> ss(text);
+    stool::lom::OnlineBackwardSuffixSort<T> ss(text);
     std::vector<int64_t> sa = ss.template to_suffix_array<int64_t>();
     int64_t tmp = sa[0];
     for(uint64_t i=1;i<sa.size();i++){

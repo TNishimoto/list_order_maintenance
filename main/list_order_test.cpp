@@ -7,12 +7,12 @@
 #include <map>
 #include <set>
 #include <forward_list>
-#include "../src/list_order_map.hpp"
-#include "stool/src/debug.hpp"
+#include "../include/list_order_map.hpp"
+#include "stool/include/debug.hpp"
 
 using namespace std;
 
-void print_vec(stool::LO::ListOrderMaintenance &list,std::vector<std::list<stool::LO::LOInt>::iterator> &vec){
+void print_vec(stool::lom::ListOrderMaintenance &list,std::vector<std::list<stool::lom::LOInt>::iterator> &vec){
     
         std::cout << "[";
 		for(uint64_t i=0;i<vec.size();i++){
@@ -27,8 +27,8 @@ void print_vec(stool::LO::ListOrderMaintenance &list,std::vector<std::list<stool
 
 void test()
 {
-		stool::LO::ListOrderMaintenance list;
-        std::vector<std::list<stool::LO::LOInt>::iterator> vec;
+		stool::lom::ListOrderMaintenance list;
+        std::vector<std::list<stool::lom::LOInt>::iterator> vec;
 
         auto ptr1 = list.insertAfter();
         vec.push_back(ptr1);

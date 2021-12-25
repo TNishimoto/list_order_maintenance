@@ -1,8 +1,8 @@
-#include "../src/online_suffix_sort.hpp"
+#include "../include/online_suffix_sort.hpp"
 
 namespace stool
 {
-namespace LO
+namespace lom
 {
 
 template<> std::vector<uint64_t> *OnlineBackwardSuffixSortComparer<uint64_t>::characters = nullptr;
@@ -16,15 +16,15 @@ template<> std::vector<int8_t> *OnlineBackwardSuffixSortComparer<int8_t>::charac
 template<> std::vector<char> *OnlineBackwardSuffixSortComparer<char>::characters = nullptr;
 
 
-template<> std::vector<stool::LO::LOPointer> *OnlineBackwardSuffixSortComparer<uint64_t>::pointers = nullptr;
-template<> std::vector<stool::LO::LOPointer> *OnlineBackwardSuffixSortComparer<uint32_t>::pointers = nullptr;
-template<> std::vector<stool::LO::LOPointer> *OnlineBackwardSuffixSortComparer<uint16_t>::pointers = nullptr;
-template<> std::vector<stool::LO::LOPointer> *OnlineBackwardSuffixSortComparer<uint8_t>::pointers = nullptr;
-template<> std::vector<stool::LO::LOPointer> *OnlineBackwardSuffixSortComparer<int64_t>::pointers = nullptr;
-template<> std::vector<stool::LO::LOPointer> *OnlineBackwardSuffixSortComparer<int32_t>::pointers = nullptr;
-template<> std::vector<stool::LO::LOPointer> *OnlineBackwardSuffixSortComparer<int16_t>::pointers = nullptr;
-template<> std::vector<stool::LO::LOPointer> *OnlineBackwardSuffixSortComparer<int8_t>::pointers = nullptr;
-template<> std::vector<stool::LO::LOPointer> *OnlineBackwardSuffixSortComparer<char>::pointers = nullptr;
+template<> std::vector<stool::lom::LOPointer> *OnlineBackwardSuffixSortComparer<uint64_t>::pointers = nullptr;
+template<> std::vector<stool::lom::LOPointer> *OnlineBackwardSuffixSortComparer<uint32_t>::pointers = nullptr;
+template<> std::vector<stool::lom::LOPointer> *OnlineBackwardSuffixSortComparer<uint16_t>::pointers = nullptr;
+template<> std::vector<stool::lom::LOPointer> *OnlineBackwardSuffixSortComparer<uint8_t>::pointers = nullptr;
+template<> std::vector<stool::lom::LOPointer> *OnlineBackwardSuffixSortComparer<int64_t>::pointers = nullptr;
+template<> std::vector<stool::lom::LOPointer> *OnlineBackwardSuffixSortComparer<int32_t>::pointers = nullptr;
+template<> std::vector<stool::lom::LOPointer> *OnlineBackwardSuffixSortComparer<int16_t>::pointers = nullptr;
+template<> std::vector<stool::lom::LOPointer> *OnlineBackwardSuffixSortComparer<int8_t>::pointers = nullptr;
+template<> std::vector<stool::lom::LOPointer> *OnlineBackwardSuffixSortComparer<char>::pointers = nullptr;
 
 template <typename T>
 bool OnlineBackwardSuffixSortComparer<T>::operator()(const uint64_t &a, const uint64_t &b) const
@@ -40,8 +40,8 @@ bool OnlineBackwardSuffixSortComparer<T>::operator()(const uint64_t &a, const ui
     {
 
         if(a == 0 || b == 0) return a < b;
-        const stool::LO::LOPointer p1 = (*OnlineBackwardSuffixSortComparer::pointers)[a - 1];
-        const stool::LO::LOPointer p2 = (*OnlineBackwardSuffixSortComparer::pointers)[b - 1];
+        const stool::lom::LOPointer p1 = (*OnlineBackwardSuffixSortComparer::pointers)[a - 1];
+        const stool::lom::LOPointer p2 = (*OnlineBackwardSuffixSortComparer::pointers)[b - 1];
         return *p1 < *p2;
     }
 }

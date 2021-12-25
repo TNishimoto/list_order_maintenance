@@ -7,8 +7,8 @@
 #include <map>
 #include <set>
 #include <forward_list>
-#include "../src/list_order_map.hpp"
-#include "stool/src/debug.hpp"
+#include "../include/list_order_map.hpp"
+#include "stool/include/debug.hpp"
 
 using namespace std;
 
@@ -27,7 +27,7 @@ void test(int num)
 {
 
 		std::vector<uint64_t> vec = stool::create_deterministic_integers<uint64_t>(num, num * 100, 0, 1);
-		stool::LO::ListOrderMap<uint64_t, ListOrderMaintenanceTest> listOrderMap;
+		stool::lom::ListOrderMap<uint64_t, ListOrderMaintenanceTest> listOrderMap;
 		for (auto it : vec)
 		{
 			
