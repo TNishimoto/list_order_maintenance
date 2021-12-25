@@ -16,7 +16,11 @@ if (NOT CMAKE_BUILD_TYPE OR CMAKE_BUILD_TYPE STREQUAL "")
     set(CMAKE_BUILD_TYPE "Release" CACHE STRING "" FORCE)
 endif()
 
-add_subdirectory(module/stool)
+if(NOT TARGET stool)
+    add_subdirectory(module/stool)
+endif()
+
+
 
 FILE(GLOB SOURCES lib/*.cpp)
 INCLUDE_DIRECTORIES(module)
