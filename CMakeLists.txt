@@ -41,6 +41,11 @@ target_link_libraries(text_to_bwt.out stool)
 add_executable(dsa.out ${SOURCES} ./main/dsa.cpp)
 target_link_libraries(dsa.out stool)
 
+add_library(list_order_maintenance STATIC ${SOURCES})
+target_link_libraries(list_order_maintenance stool)
+
+
+
 #add_library(stool STATIC ${SOURCES})
 
 
