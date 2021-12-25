@@ -23,7 +23,7 @@ endif()
 
 
 FILE(GLOB SOURCES lib/*.cpp)
-INCLUDE_DIRECTORIES(module)
+#INCLUDE_DIRECTORIES(module)
 #FILE(GLOB STOOL_SOURCES module/stool/lib/io.cpp)
 
 

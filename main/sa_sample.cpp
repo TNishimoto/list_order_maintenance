@@ -2,7 +2,7 @@
 #include <string>
 #include <memory>
 #include "../include/online_suffix_sort.hpp"
-#include "stool/include/print.hpp"
+#include "../module/stool/include/print.hpp"
 
 using namespace std;
 
