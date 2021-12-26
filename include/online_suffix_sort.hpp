@@ -81,7 +81,10 @@ public:
             counter--;
             if(counter == 0){
                 counter_sum += counterMax;
+                if(text.size() > 100000){
                 std::cout << "Processing(" << counterID << "/" << "100" << "): [" << counter_sum << "/" << text.size() << "]" << std::endl;
+
+                }
                 counter = counterMax;
                 counterID++;
             }
