@@ -6,9 +6,9 @@
 #include <random>
 #include <chrono>
 //#include "divsufsort64.h"
-#include "../module/stool/include/cmdline.h"
+#include "stool/include/cmdline.h"
 #include "../include/online_suffix_sort.hpp"
-#include "../module/stool/include/print.hpp"
+#include "stool/include/print.hpp"
 
 using namespace std;
 

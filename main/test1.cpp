@@ -2,10 +2,10 @@
 #include <string>
 #include <memory>
 #include "../include/online_suffix_sort.hpp"
-#include "../module/stool/include/print.hpp"
-#include "../module/stool/include/cmdline.h"
-#include "../module/stool/include/io.hpp"
-#include "../module/stool/include/debug.hpp"
+#include "stool/include/print.hpp"
+#include "stool/include/cmdline.h"
+#include "stool/include/io.hpp"
+#include "stool/include/debug.hpp"
 
 //#include "stool/src/cmdline.h"
 //#include "stool/src/io.hpp"
