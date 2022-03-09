@@ -26,6 +26,17 @@ FILE(GLOB SOURCES lib/*.cpp)
 INCLUDE_DIRECTORIES(module)
 #FILE(GLOB STOOL_SOURCES module/stool/lib/io.cpp)
 
+# Set PROJECT_IS_TOP_LEVEL to ON if if this is the top level project (not
+# if this is included as a subproject of something else). Note that this is
+# handled automatically for CMake >= 3.21.
+if (CMAKE_VERSION VERSION_LESS 3.21)
+    if ("${CMAKE_PROJECT_NAME}" STREQUAL "${PROJECT_NAME}")
+        set (PROJECT_IS_TOP_LEVEL ON)
+    endif ()
+endif ()
+
+
+if (PROJECT_IS_TOP_LEVEL)
 add_library(list_order_maintenance STATIC ${SOURCES})
 target_link_libraries(list_order_maintenance stool)
 
@@ -46,6 +57,11 @@ target_link_libraries(text_to_bwt.out list_order_maintenance stool)
 
 add_executable(dsa.out ./main/dsa.cpp)
 target_link_libraries(dsa.out list_order_maintenance stool)
+
+endif()
+
+
+
 
 
 
