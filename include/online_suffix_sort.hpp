@@ -77,13 +77,15 @@ public:
         uint64_t counterID = 0;
         uint64_t counter_sum = 0;
 
+        if(text.size() > 1000000){
         std::cout << std::endl;
+        }
         for (auto it = text.rbegin();it!=text.rend();++it)
         {
             counter--;
             if(counter == 0){
                 counter_sum += counterMax;
-                if(text.size() > 100000){
+                if(text.size() > 1000000){
                 std::cout << "\r Processing(" << counterID << "/" << "100" << "): [" << counter_sum << "/" << text.size() << "]" << std::flush;
 
                 }
@@ -93,7 +95,10 @@ public:
             //counter.increment();
             this->push(*it);
         }
+        if(text.size() > 1000000){
         std::cout << std::endl;
+        }
+
     }
 
 
