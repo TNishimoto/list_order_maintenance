@@ -12,7 +12,21 @@
 
 using namespace std;
 
+template <typename T>
+	std::vector<T> create_deterministic_integers(uint64_t len, int64_t max, int64_t min, int64_t seed)
+	{
+		std::mt19937 mt(seed);
+		std::uniform_int_distribution<> rand100(0, (max - min) - 1);
 
+		std::vector<T> r;
+
+		for (size_t i = 0; i < len; i++)
+		{
+			int64_t value = min + rand100(mt);
+			r.push_back(value);
+		}
+		return r;
+	}
 class ListOrderMaintenanceTest
 {
 	public:
@@ -26,7 +40,7 @@ class ListOrderMaintenanceTest
 void test(int num)
 {
 
-		std::vector<uint64_t> vec = stool::create_deterministic_integers<uint64_t>(num, num * 100, 0, 1);
+		std::vector<uint64_t> vec = create_deterministic_integers<uint64_t>(num, num * 100, 0, 1);
 		stool::lom::ListOrderMap<uint64_t, ListOrderMaintenanceTest> listOrderMap;
 		for (auto it : vec)
 		{

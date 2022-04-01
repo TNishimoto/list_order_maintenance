@@ -31,8 +31,12 @@ INCLUDE_DIRECTORIES(module)
 # handled automatically for CMake >= 3.21.
 if (CMAKE_VERSION VERSION_LESS 3.21)
     if ("${CMAKE_PROJECT_NAME}" STREQUAL "${PROJECT_NAME}")
+        message("SET PROJECT_IS_TOP_LEVEL ON IN ${PROJECT_NAME}")
         set (PROJECT_IS_TOP_LEVEL ON)
-    endif ()
+    else()
+        message("SET PROJECT_IS_TOP_LEVEL OFF IN ${PROJECT_NAME}")
+    set (PROJECT_IS_TOP_LEVEL OFF)    
+    endif()
 endif ()
 
 
