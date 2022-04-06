@@ -64,7 +64,7 @@ target_link_libraries(dsa.out list_order_maintenance stool)
 
 else()
 add_library(list_order_maintenance STATIC ${SOURCES})
-target_link_libraries(list_order_maintenance stool)
+target_link_libraries(list_order_maintenance)
 endif()
 
 

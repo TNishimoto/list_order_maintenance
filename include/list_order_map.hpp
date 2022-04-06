@@ -1,3 +1,4 @@
+#pragma once
 #include "list_order.hpp"
 
 namespace stool {
