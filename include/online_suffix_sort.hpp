@@ -1,3 +1,4 @@
+#pragma once
 #include "./list_order_map.hpp"
 #include "stool/include/print.hpp"
 #include <cassert>
