@@ -15,9 +15,6 @@ set(CMAKE_CXX_FLAGS "--target=aarch64-linux-gnu -fexceptions -m64 -D_INT128 -sta
 include_directories(/opt/homebrew/Cellar/aarch64-unknown-linux-gnu/13.2.0/toolchain/aarch64-unknown-linux-gnu/include/c++/13.2.0/aarch64-unknown-linux-gnu)
 include_directories(/opt/homebrew/Cellar/aarch64-unknown-linux-gnu/13.2.0/toolchain/aarch64-unknown-linux-gnu/include/c++/13.2.0)
 link_directories(/opt/homebrew/Cellar/aarch64-unknown-linux-gnu/13.2.0/toolchain/lib/gcc/aarch64-unknown-linux-gnu/13.2.0)
-
-set(CMAKE_EXE_LINKER_FLAGS -B/opt/homebrew/Cellar/aarch64-unknown-linux-gnu/13.2.0/toolchain/lib/gcc/aarch64-unknown-linux-gnu/13.2.0)
-set(CMAKE_CXX_FLAGS "--target=aarch64-linux-gnu -fexceptions -m64 -D_INT128 -static")
 else(MY_SERVER)
 set(CMAKE_CXX_FLAGS "-m64  -D_INT128 -Wall -Wextra")
 endif(MY_SERVER)
