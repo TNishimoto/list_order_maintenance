@@ -32,7 +32,7 @@ endif()
 
 
 
-FILE(GLOB SOURCES lib/*.cpp)
+FILE(GLOB SOURCES lib/*.cpp module/stool/lib/*.cpp)
 INCLUDE_DIRECTORIES(module)
 INCLUDE_DIRECTORIES(include)
 #FILE(GLOB STOOL_SOURCES module/stool/lib/io.cpp)
@@ -72,6 +72,10 @@ target_link_libraries(text_to_bwt.out stool)
 
 add_executable(dsa.out ${SOURCES}  ./main/dsa.cpp)
 target_link_libraries(dsa.out stool)
+
+add_executable(test2.out ${SOURCES}  ./main/test2.cpp)
+target_link_libraries(test2.out stool)
+
 
 else()
 add_library(list_order_maintenance STATIC ${SOURCES})
