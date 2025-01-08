@@ -3,16 +3,14 @@
 #include <memory>
 #include "../include/online_suffix_sort.hpp"
 #include "stool/include/print.hpp"
-#include "stool/include/cmdline.h"
-#include "stool/include/io.hpp"
-#include "stool/include/debug.hpp"
+#include "stool/include/light_stool.hpp"
 
 using namespace std;
 
 template <typename T>
 void suffix_array_test(vector<T> &text){
     //stool::Printer::print("text",text);
-   vector<uint64_t> sa = stool::construct_naive_SA<T, uint64_t>(text);
+   vector<uint64_t> sa = stool::StringFunctions::construct_naive_suffix_array(text);
    std::vector<uint64_t> sa2 = stool::lom::construct_suffix_array(text);
 
     //stool::Printer::print("collect",sa);
