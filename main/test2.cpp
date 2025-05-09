@@ -4,9 +4,8 @@
 #include <bitset>
 #include <cassert>
 #include <chrono>
-// #include "qgram_tree.h"
-#include "stool/include/light_stool.hpp"
-#include "../include/online_suffix_sort.hpp"
+#include "../include/constructor.hpp"
+
 
 #include <filesystem>
 

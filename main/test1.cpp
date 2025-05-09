@@ -1,8 +1,8 @@
 #include <iostream>
 #include <string>
 #include <memory>
-#include "../include/online_suffix_sort.hpp"
-#include "stool/include/light_stool.hpp"
+#include "../include/constructor.hpp"
+
 
 //#include "stool/src/cmdline.h"
 //#include "stool/src/io.hpp"

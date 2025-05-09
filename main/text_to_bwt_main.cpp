@@ -6,8 +6,8 @@
 #include <random>
 #include <chrono>
 //#include "divsufsort64.h"
-#include "stool/include/light_stool.hpp"
-#include "../include/online_suffix_sort.hpp"
+#include "../include/constructor.hpp"
+
 
 using namespace std;
 
