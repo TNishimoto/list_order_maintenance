@@ -9,9 +9,12 @@ namespace stool {
 
 namespace lom
 {
+	/*
 	ListOrderMaintenance::ListOrderMaintenance() : _list() {
 		this->clear();
 	}
+	*/
+	/*
 	void ListOrderMaintenance::clear() {
 		this->_list.clear();
 		this->labelMaxValue = std::numeric_limits<LOInt>::max() / 4;
@@ -19,7 +22,8 @@ namespace lom
 		this->_B = this->_list.begin();
 		this->_list.push_back(this->labelMaxValue/2);
 	}
-
+	*/
+	/*
 	LOInt ListOrderMaintenance::getBasicLabel(const std::list<LOInt>::iterator& item) {
 		if (item == this->_B) {
 			return 0;
@@ -28,6 +32,8 @@ namespace lom
 			return this->getDistance(this->_B, item);
 		}
 	}
+	*/
+/*
 	LOInt ListOrderMaintenance::getStarLabel(const std::list<LOInt>::iterator& item) {
 		auto succ = ++std::list<LOInt>::iterator(item);
 		if (succ == this->_list.end()) {
@@ -38,10 +44,14 @@ namespace lom
 			return this->getBasicLabel(succ);
 		}
 	}
+	*/
+/*
 	bool ListOrderMaintenance::remove(std::list<LOInt>::iterator& x) {
 		this->_list.erase(x);
 		return true;
 	}
+	*/
+	/*
 	void ListOrderMaintenance::relabeling(const std::list<LOInt>::iterator& x) {
 		auto succ = ++std::list<LOInt>::iterator(x);
 		LOInt j = 1;
@@ -65,7 +75,8 @@ namespace lom
 		
 		this->errorCheck(x, succ);
 	}
-
+	*/
+	/*
 	const std::list<LOInt>::iterator ListOrderMaintenance::insertAfter(const std::list<LOInt>::iterator& x) {
 		if (x == --this->_list.end()) throw "error";
 		this->relabeling(x);
@@ -78,12 +89,16 @@ namespace lom
 		this->errorCheck(x);
 		return ptr;
 	}
+	*/
+	/*
 	bool ListOrderMaintenance::errorCheck() {
 		for (auto it = this->_list.begin(); it != this->_list.end(); it++) {
 			this->errorCheck(it);
 		}
 		return true;
 	}
+	*/
+/*
 	bool ListOrderMaintenance::errorCheck(const std::list<LOInt>::iterator& x) {
 		if (!(this->getBasicLabel(x) < this->getStarLabel(x))) {
 			this->print(x);
@@ -91,7 +106,8 @@ namespace lom
 		}
 		return true;
 	}
-
+	*/
+	/*
 	bool ListOrderMaintenance::errorCheck(const std::list<LOInt>::iterator& start, const std::list<LOInt>::iterator& end) {
 		if (end == this->_list.end()) {
 			return this->errorCheck(start, this->_B);
@@ -110,26 +126,14 @@ namespace lom
 			return true;
 		}
 	}
-	void ListOrderMaintenance::print([[maybe_unused]]  const std::list<LOInt>::iterator& x) {
-		/*
-		for (auto &v : this->_list) {
-			//std::cout << setw(19) << v << " " << std::flush;
-			//if (v == *x) { std::cout << "!" << k << std::endl; }
-			
-		}
-		*/
-		/*
-		std::cout << std::endl;
-		std::cout << this->getBasicLabel(x) << "/" << this->getStarLabel(x) << "/" << *x << std::endl;
-		std::cout << "max = " << this->labelMaxValue << std::endl;
-		*/
-	}
-
+	*/
+	/*
 	const std::list<LOInt>::iterator ListOrderMaintenance::insertAfter() {
 		return this->insertAfter(this->_B);
 	}
+	*/
 #ifdef _INT128
-
+	/*
 	string to_string(__int128_t n)
 	{
 		enum
@@ -145,12 +149,16 @@ namespace lom
 
 		return std::string(p);
 	}
+	*/
 #endif // !_INT128
 
+/*
 string to_string(uint64_t n)
 {
 	return std::to_string(n);
 }
+*/
+/*
 LOInt ListOrderMaintenance::getDistance(const std::list<LOInt>::iterator &x, const std::list<LOInt>::iterator &y) {
 	if (*y > *x) {
 		return *y - *x;
@@ -165,6 +173,8 @@ LOInt ListOrderMaintenance::getDistance(const std::list<LOInt>::iterator &x, con
 		throw "error";
 	}
 }
+*/
+/*
 LOInt ListOrderMaintenance::getHalfPosition(const std::list<LOInt>::iterator &x, const std::list<LOInt>::iterator &succ) {
 
 	if (*x < *succ) {
@@ -181,6 +191,7 @@ LOInt ListOrderMaintenance::getHalfPosition(const std::list<LOInt>::iterator &x,
 		}
 	}
 }
+*/
 	/*
 	const std::list<LOInt>::iterator ListOrderMaintenance::getMinimumIterator() {
 		return this->_B;

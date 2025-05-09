@@ -43,26 +43,29 @@ INCLUDE_DIRECTORIES(module)
 
 
 if (PROJECT_IS_TOP_LEVEL)
-add_library(list_order_maintenance STATIC ${SOURCES})
-target_link_libraries(list_order_maintenance)
+#add_library(list_order_maintenance STATIC ${SOURCES})
+#target_link_libraries(list_order_maintenance)
 
 add_executable(list_order_map_test.out ./main/list_order_map_test.cpp)
-target_link_libraries(list_order_map_test.out list_order_maintenance)
+##target_link_libraries(list_order_map_test.out)
+##target_link_libraries(list_order_map_test.out list_order_maintenance)
 
 add_executable(list_order_test.out ./main/list_order_test.cpp)
-target_link_libraries(list_order_test.out list_order_maintenance)
+##target_link_libraries(list_order_test.out)
 
-add_executable(random.out ./main/random_test.cpp)
-target_link_libraries(random.out list_order_maintenance)
+##target_link_libraries(list_order_test.out list_order_maintenance)
 
-add_executable(sa_sample.out ./main/sa_sample.cpp)
-target_link_libraries(sa_sample.out list_order_maintenance)
+#add_executable(random.out ./main/random_test.cpp)
+#target_link_libraries(random.out list_order_maintenance)
 
-add_executable(text_to_bwt.out ./main/text_to_bwt_main.cpp)
-target_link_libraries(text_to_bwt.out list_order_maintenance)
+##add_executable(sa_sample.out ./main/sa_sample.cpp)
+##target_link_libraries(sa_sample.out list_order_maintenance)
 
-add_executable(dsa.out ./main/dsa.cpp)
-target_link_libraries(dsa.out list_order_maintenance)
+##add_executable(text_to_bwt.out ./main/text_to_bwt_main.cpp)
+##target_link_libraries(text_to_bwt.out list_order_maintenance)
+
+##add_executable(dsa.out ./main/dsa.cpp)
+##target_link_libraries(dsa.out list_order_maintenance)
 
 else()
 add_library(list_order_maintenance STATIC ${SOURCES})

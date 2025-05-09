@@ -8,7 +8,8 @@
 #include <set>
 #include <forward_list>
 #include "../include/list_order_map.hpp"
-#include "stool/include/debug.hpp"
+#include "stool/include/light_stool.hpp"
+
 
 using namespace std;
 

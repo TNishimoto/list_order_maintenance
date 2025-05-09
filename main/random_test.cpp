@@ -2,7 +2,6 @@
 #include <string>
 #include <memory>
 #include "../include/online_suffix_sort.hpp"
-#include "stool/include/print.hpp"
 #include "stool/include/light_stool.hpp"
 
 using namespace std;

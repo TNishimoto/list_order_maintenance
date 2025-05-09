@@ -1,6 +1,6 @@
 #pragma once
 #include "./list_order_map.hpp"
-#include "stool/include/print.hpp"
+#include "stool/include/light_stool.hpp"
 #include <cassert>
 
 namespace stool

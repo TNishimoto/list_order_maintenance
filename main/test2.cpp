@@ -5,13 +5,8 @@
 #include <cassert>
 #include <chrono>
 // #include "qgram_tree.h"
-// #include "include/debug/debug.hpp"
-#include "stool/include/cmdline.h"
-#include "stool/include/print.hpp"
-#include "stool/include/io.hpp"
-#include "stool/include/debug.hpp"
+#include "stool/include/light_stool.hpp"
 #include "../include/online_suffix_sort.hpp"
-#include "stool/include/sa_bwt_lcp.hpp"
 
 #include <filesystem>
 
