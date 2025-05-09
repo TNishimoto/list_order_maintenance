@@ -13,8 +13,9 @@ endif(CPP_STATIC)
 set(CMAKE_CXX_FLAGS_DEBUG  "-g -O0 -DDEBUG")
 set(CMAKE_CXX_FLAGS_RELEASE  "-O3 -DNDEBUG")
 
-INCLUDE_DIRECTORIES(module)
+INCLUDE_DIRECTORIES(../module)
 
-add_executable(text_to_bwt.out ./main/text_to_bwt_main.cpp)
-add_executable(dsa.out ./main/dsa_main.cpp)
-add_executable(delta.out ./main/delta_main.cpp)
+add_executable(list_order_map_test.out list_order_map_test.cpp)
+add_executable(list_order_test.out list_order_test.cpp)
+add_executable(random.out random_test.cpp)
+add_executable(sa_sample.out sa_sample.cpp)

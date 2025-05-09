@@ -101,10 +101,12 @@ namespace stool
                 uint64_t counterID = 0;
                 uint64_t counter_sum = 0;
 
+                /*
                 if (text.size() > 1000000)
                 {
                     std::cout << std::endl;
                 }
+                */
                 for (auto it = text.rbegin(); it != text.rend(); ++it)
                 {
                     counter--;
@@ -113,7 +115,7 @@ namespace stool
                         counter_sum += counterMax;
                         if (text.size() > 1000000)
                         {
-                            std::cout << "\r Processing(" << counterID << "/" << "100" << "): [" << counter_sum << "/" << text.size() << "]" << std::flush;
+                            std::cout << "\r Sorting Suffixes(" << counterID << "/" << "100" << "): [" << counter_sum << "/" << text.size() << "]" << std::flush;
                         }
                         counter = counterMax;
                         counterID++;
@@ -123,7 +125,7 @@ namespace stool
                 }
                 if (text.size() > 1000000)
                 {
-                    std::cout << std::endl;
+                    std::cout << "[END]" << std::endl;
                 }
             }
 
@@ -141,12 +143,31 @@ namespace stool
                 sa.resize(size);
                 uint64_t x = 0;
 
+                uint64_t counterMax = (size / 100) + 1;
+                uint64_t counter = counterMax;
+                uint64_t counterID = 0;
+                uint64_t counter_sum = 0;
+
                 auto it = this->sortedSuffixes.begin();
                 while (it != this->sortedSuffixes.end())
                 {
+                    counter--;
+                    if (counter == 0)
+                    {
+                        counter_sum += counterMax;
+                        if (size > 1000000)
+                        {
+                            std::cout << "\r Constructing Suffix Array... (" << counterID << "/" << "100" << "): [" << counter_sum << "/" << size << "]" << std::flush;
+                        }
+                        counter = counterMax;
+                        counterID++;
+                    }
+
                     sa[x++] = (X)(size - (*it) - 1);
                     ++it;
                 }
+                std::cout << "[END]" << std::endl;
+
                 return sa;
             }
 

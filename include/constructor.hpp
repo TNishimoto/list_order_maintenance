@@ -66,18 +66,19 @@ namespace stool
         template <typename T>
         std::vector<int64_t> construct_differential_suffix_array(const std::vector<T> &text)
         {
+            std::vector<uint64_t> sa;
 
-            stool::lom::OnlineBackwardSuffixSort<T> ss(text);
-            std::vector<int64_t> sa = ss.template to_suffix_array<int64_t>();
-            int64_t tmp = sa[0];
-            for (uint64_t i = 1; i < sa.size(); i++)
             {
-                int64_t newValue = sa[i] - tmp;
-                tmp = sa[i];
-                sa[i] = newValue;
-            }
+                stool::lom::OnlineBackwardSuffixSort<T> ss(text);
+                std::vector<uint64_t> tmp = ss.template to_suffix_array<uint64_t>();
+                sa.swap(tmp);
 
-            return sa;
+                std::cout << "Destructing OnlineBackwardSuffixSort..." << std::flush;
+            }
+                std::cout << "[END]" << std::endl;
+
+
+            return stool::construct_DSA(sa);
         };
 
     }
