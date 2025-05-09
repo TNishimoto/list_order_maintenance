@@ -1,10 +1,6 @@
 #include <iostream>
-#include <fstream>
-#include <cstdlib>
-#include <stdio.h>
-#include <vector>
-#include <random>
-#include <chrono>
+#include <string>
+#include <memory>
 //#include "divsufsort64.h"
 #include "../include/constructor.hpp"
 

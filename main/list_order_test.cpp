@@ -1,12 +1,6 @@
-#include <vector>
 #include <iostream>
-#include <list>
-#include <random>
-#include <exception>
+#include <string>
 #include <memory>
-#include <map>
-#include <set>
-#include <forward_list>
 #include "../include/list_order_map.hpp"
 #include "stool/include/light_stool.hpp"
 
